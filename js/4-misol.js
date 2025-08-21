@@ -176,4 +176,4 @@ function task(array) {
 }
 
 const result = task(students);
-console.log(result);
+console.log("Farqi: " + result);

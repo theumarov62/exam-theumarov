@@ -1,3 +1,6 @@
+// ------------------
+// Tushuntirish
+// students arrayidan qizlarni o'zini o'qiydigan fanlarini alifbo tartibida tartiblaganda eng birinchida va eng oxirida turadigan qizlarning ismlari uzunligi o'rtasidagi farq qancha?
 const students = [
   {
     name: "Fotima",
@@ -153,9 +156,7 @@ const students = [
     grade: "B+",
   },
 ];
-// ------------------
-// Tushuntirish
-// students arrayidan qizlarni o'zini o'qiydigan fanlarini alifbo tartibida tartiblaganda eng birinchida va eng oxirida turadigan qizlarning ismlari uzunligi o'rtasidagi farq qancha?
+
 function task(array) {
   const girls = array.filter((s) => s.gender === "female");
   girls.sort((a, b) => (a.major > b.major ? 1 : -1));

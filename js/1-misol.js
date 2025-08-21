@@ -174,4 +174,8 @@ function task(arr) {
 }
 
 const res = task(students);
-console.log(res);
+console.table(res);
+// console.log(res);
+
+// Assalomu alaykum Ustoz. Ushbu tepadagi console.table yoki console.log ishlatib korishingiz mumkin.
+// table da chiroyli korindi va shunda qilib qo'yaverdim.
