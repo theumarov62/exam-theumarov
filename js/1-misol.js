@@ -156,30 +156,22 @@ const students = [
 
 // ------------------
 // Tushuntirish
-//  Eng katta yoshli ayol va eng kichik yoshli erkak yoshlari o'rtasidagi farqni top.
+// 1. students arrayidan bahosi "A"ga teng qizlarning yoshini 3 ga oshirib [misol uchun 22 bo'lsa 25 qilib qo'ying], xuddi shu qizlarni yangi arrayda qaytaring.
+// 2. Keyin shu qizlarni  alifbo tartibida tartiblab yangi array qaytaring. Ismlari bo'yicha tartiblaysiz. Yangi array qaytarasiz.
 
-function task(array) {
-  const females = array.filter((student) => student.gender === "female");
-  const males = array.filter((student) => student.gender === "male");
+function task(arr) {
+  const filteredGrade = arr.filter(
+    (s) => s.gender === "female" && s.grade === "A"
+  );
+  const filteredAgeGrade = filteredGrade.map((s) => ({
+    ...s,
+    age: s.age + 3,
+  }));
 
-  let old = females[0];
-  for (let i = 1; i < females.length; i++) {
-    if (females[i].age > old.age) {
-      old = females[i];
-    }
-  }
+  const sort = filteredAgeGrade.sort((a, b) => a.name.localeCompare(b.name));
 
-  let kichik = males[0];
-  for (let i = 1; i < males.length; i++) {
-    if (males[i].age < kichik.age) {
-      kichik = males[i];
-    }
-  }
-
-  return kichik.age - old.age;
+  return sort;
 }
 
-const result = task(students);
-console.log(result); // -57
-
-// result -57 chiqishi kerak. Eng katta yoshli ayol Malika, eng kichik yoshli erkak Shohjahon. Yoshlari o'rtasidagi far esa shunaqa bo'ladi.
+const res = task(students);
+console.log(res);

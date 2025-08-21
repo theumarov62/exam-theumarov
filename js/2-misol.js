@@ -153,37 +153,25 @@ const students = [
     grade: "B+",
   },
 ];
-
 // ------------------
 // Tushuntirish
-// 1. students arrayidan bahosi "A"ga teng qizlarning yoshini 3 ga oshirib [misol uchun 22 bo'lsa 25 qilib qo'ying], xuddi shu qizlarni yangi arrayda qaytaring.
-// 2. Keyin shu qizlarni  alifbo tartibida tartiblab yangi array qaytaring. Ismlari bo'yicha tartiblaysiz. Yangi array qaytarasiz.
-
+// students arrayidan qizlarni o'zini o'qiydigan fanlarini alifbo tartibida tartiblaganda eng birinchida va eng oxirida turadigan qizlarning ismlari uzunligi o'rtasidagi farq qancha?
 function task(array) {
-  const filtered = array.filter(
-    (s) => s.gender === "female" && s.grade === "A"
-  );
+  const girls = array.filter((s) => s.gender === "female");
+  girls.sort((a, b) => (a.major > b.major ? 1 : -1));
+  const bir = girls[0].name.length;
+  const oxir = girls[girls.length - 1].name.length;
 
-  const up = filtered.map((s) => {
-    return {
-      name: s.name,
-      gender: s.gender,
-      id: s.id,
-      age: s.age + 3,
-      major: s.major,
-      grade: s.grade,
-    };  
-  });
+  let res;
+  if (bir > oxir) {
+    res = bir - oxir;
+  } else {
+    res = oxir - bir;
+  }
 
-  up.sort((a, b) => {
-    if (a.name < b.name) return -1;
-    if (a.name > b.name) return 1;
-    return 0;
-  });
-
-  return up;
+  return res;
 }
-
 const result = task(students);
-
 console.log(result);
+
+// result 0 chiqishi kerak. Siz alifbo bo'yicha o'qiydigan fanlarini tartiblasangiz birinchida Fotima ismli qiz, oxirgi o'rinda esa Madina ismli qiz turadi. Ikkalasining ham ismi 6 harf oradagi farq rostan ham 0.

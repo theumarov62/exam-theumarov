@@ -154,27 +154,26 @@ const students = [
   },
 ];
 
-// ------------------
-// Tushuntirish
-// students arrayidan qizlarni o'zini o'qiydigan fanlarini alifbo tartibida tartiblaganda eng birinchida va eng oxirida turadigan qizlarning ismlari uzunligi o'rtasidagi farq qancha?
-
 function task(array) {
-  let girls = array.filter((s) => s.gender === "female");
-  girls.sort((a, b) => (a.major > b.major ? 1 : -1));
+  const females = array.filter((s) => s.gender === "female");
+  const males = array.filter((s) => s.gender === "male");
 
-  let bir = girls[0].name.length;
-  let oxir = girls[girls.length - 1].name.length;
-
-  let res;
-  if (bir > oxir) {
-    res = bir - oxir;
-  } else {
-    res = oxir - bir;
+  let old = females[0];
+  for (let i = 1; i < females.length; i++) {
+    if (females[i].age > old.age) {
+      old = females[i];
+    }
   }
-  return res;
+
+  let kichik = males[0];
+  for (let i = 1; i < males.length; i++) {
+    if (males[i].age < kichik.age) {
+      kichik = males[i];
+    }
+  }
+
+  return kichik.age - old.age;
 }
 
 const result = task(students);
 console.log(result);
-
-// result 0 chiqishi kerak. Siz alifbo bo'yicha o'qiydigan fanlarini tartiblasangiz birinchida Fotima ismli qiz, oxirgi o'rinda esa Madina ismli qiz turadi. Ikkalasining ham ismi 6 harf oradagi farq rostan ham 0.
